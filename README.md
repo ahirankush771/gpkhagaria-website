@@ -171,7 +171,7 @@ This website was built as a **CSE Department project** for **Government Polytech
 
 ```
 MIT License — Free to use, modify and distribute
-Copyright (c) 2025 Ankush Kumar
+Copyright (c) 2025 Ankush Kumar CSE (Cybersecurity developer)
 ```
 
 ---
