@@ -768,4 +768,1132 @@ section { position: relative; z-index: 1; }
   box-shadow: 0 4px 12px var(--shadow-c);
 }
 .step-body h4 { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
-.step-body p { font-size: 12px; color: var(--muted); 
+.step-body p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+.adm-form-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 34px 30px;
+}
+.adm-form-wrap h3 {
+  font-family: var(--ff-head);
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.adm-form-wrap p { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.form-row.full { grid-template-columns: 1fr; }
+
+.field-wrap { display: flex; flex-direction: column; gap: 6px; }
+.field-wrap label { font-size: 12px; font-weight: 600; color: var(--muted); }
+.field-wrap input, .field-wrap select, .field-wrap textarea {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--text);
+  font-family: var(--ff-body);
+  transition: border-color .2s;
+  width: 100%;
+}
+.field-wrap input:focus, .field-wrap select:focus, .field-wrap textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+}
+.field-wrap textarea { resize: vertical; min-height: 80px; }
+
+/* ═══════════════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════════════ */
+#contact { background: var(--bg2); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.contact-info { display: flex; flex-direction: column; gap: 16px; }
+.ci-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 18px;
+}
+.ci-ico { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+.ci-text h4 { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+.ci-text p { font-size: 12px; color: var(--muted); line-height: 1.55; }
+
+.contact-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 34px 30px;
+}
+.contact-form h3 { font-family: var(--ff-head); font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+.contact-form > p { font-size: 13px; color: var(--muted); margin-bottom: 24px; }
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════ */
+footer {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 48px 20px 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-top {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.footer-brand p { font-size: 13px; color: var(--muted); margin-top: 12px; line-height: 1.65; max-width: 240px; }
+.footer-col h5 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 14px; font-family: var(--ff-mono); }
+.footer-col a { display: block; font-size: 13px; color: var(--muted); padding: 4px 0; transition: color .2s; }
+.footer-col a:hover { color: var(--blue); }
+
+.footer-bottom {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--muted);
+}
+.footer-bottom a { color: var(--blue); }
+
+/* ═══════════════════════════════════════════════
+   SEARCH OVERLAY
+═══════════════════════════════════════════════ */
+#search-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(5,9,18,0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 100px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s;
+}
+#search-overlay.open { opacity: 1; pointer-events: all; }
+
+.search-box {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.4);
+  transform: translateY(-20px);
+  transition: transform .25s;
+}
+#search-overlay.open .search-box { transform: translateY(0); }
+
+.search-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.search-input-wrap span { font-size: 20px; color: var(--muted); }
+#search-input {
+  flex: 1;
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: var(--text);
+  font-family: var(--ff-body);
+  outline: none;
+}
+#search-input::placeholder { color: var(--muted); }
+
+.search-results { padding: 12px; max-height: 320px; overflow-y: auto; }
+.sr-item {
+  padding: 12px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background .15s;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.sr-item:hover { background: var(--surface); }
+.sr-item span { font-size: 18px; }
+.sr-info h4 { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+.sr-info p { font-size: 11px; color: var(--muted); }
+
+/* ═══════════════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ═══════════════════════════════════════════════
+   CANVAS
+═══════════════════════════════════════════════ */
+#cvs {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+/* ═══════════════════════════════════════════════
+   USER PROFILE PAGE
+═══════════════════════════════════════════════ */
+#profile-section { background: var(--bg2); }
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.profile-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 30px 24px;
+  text-align: center;
+  position: sticky;
+  top: calc(var(--nav-h) + 20px);
+}
+
+.profile-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--teal));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  margin: 0 auto 16px;
+  box-shadow: 0 0 0 4px var(--bg2), 0 0 0 6px rgba(59,130,246,0.3);
+}
+
+.profile-name {
+  font-family: var(--ff-head);
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.profile-role {
+  font-size: 12px;
+  color: var(--blue);
+  font-family: var(--ff-mono);
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.profile-badge-row {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.p-badge {
+  background: rgba(59,130,246,0.1);
+  border: 1px solid rgba(59,130,246,0.2);
+  border-radius: 100px;
+  padding: 3px 10px;
+  font-size: 11px;
+  color: var(--blue);
+  font-family: var(--ff-mono);
+}
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 20px;
+}
+.ps-item {
+  background: var(--bg3);
+  border-radius: 10px;
+  padding: 12px 8px;
+}
+.ps-val {
+  font-family: var(--ff-head);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--blue);
+}
+.ps-key { font-size: 10px; color: var(--muted); margin-top: 2px; }
+
+.profile-details { display: flex; flex-direction: column; gap: 20px; }
+
+.pd-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+.pd-head {
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pd-head span { font-size: 18px; }
+.pd-head h3 { font-family: var(--ff-head); font-size: 15px; font-weight: 700; }
+.pd-body { padding: 20px 22px; }
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.info-row:last-child { border-bottom: none; }
+.info-row .label { color: var(--muted); }
+.info-row .value { font-weight: 600; text-align: right; }
+
+.subject-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.subj-card {
+  background: var(--bg3);
+  border-radius: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+}
+.subj-card .name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+.subj-card .grade {
+  font-family: var(--ff-mono);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--teal);
+}
+.subj-card .marks { font-size: 11px; color: var(--muted); }
+
+.activity-list { display: flex; flex-direction: column; gap: 10px; }
+.act-item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  background: var(--bg3);
+  border-radius: 10px;
+}
+.act-ico { font-size: 20px; flex-shrink: 0; }
+.act-info h4 { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+.act-info p { font-size: 11px; color: var(--muted); }
+
+/* ═══════════════════════════════════════════════
+   TOAST
+═══════════════════════════════════════════════ */
+#toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 2000;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  transform: translateY(80px);
+  opacity: 0;
+  transition: all .35s cubic-bezier(.32,.72,0,1);
+  pointer-events: none;
+}
+#toast.show { transform: translateY(0); opacity: 1; }
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media (max-width: 960px) {
+  .hero-wrap { grid-template-columns: 1fr; }
+  .hero-panel { display: none; }
+  .notices-layout { grid-template-columns: 1fr; }
+  .dept-grid { grid-template-columns: repeat(2, 1fr); }
+  .ach-grid { grid-template-columns: repeat(2, 1fr); }
+  .fac-grid { grid-template-columns: repeat(2, 1fr); }
+  .adm-layout { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .profile-layout { grid-template-columns: 1fr; }
+  .profile-card { position: static; }
+}
+
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .ham { display: flex; }
+  .cta-nav { display: none; }
+  .dept-grid { grid-template-columns: 1fr; }
+  .ach-grid { grid-template-columns: 1fr 1fr; }
+  .fac-grid { grid-template-columns: 1fr 1fr; }
+  .footer-top { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .subject-grid { grid-template-columns: 1fr; }
+}
+</style>
+<body>
+
+<!-- Background -->
+<canvas id="cvs"></canvas>
+<div class="bg-mesh"></div>
+<div class="bg-grid"></div>
+
+<!-- Search Overlay -->
+<div id="search-overlay">
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <span>🔍</span>
+      <input type="text" id="search-input" placeholder="Search departments, notices, courses…" autocomplete="off">
+      <kbd style="font-size:11px;color:var(--muted);background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:2px 8px;font-family:var(--ff-mono)">ESC</kbd>
+    </div>
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav id="nav">
+  <div class="nav-wrap">
+    <a href="#hero" class="nav-logo">
+      <div class="logo-emblem">🎓</div>
+      <div class="logo-text">
+        <strong>GP Khagaria</strong>
+        <span>Government Polytechnic</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="#hero" class="active">Home</a>
+      <a href="#notices">Notices</a>
+      <a href="#departments">Departments</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#admission">Admission</a>
+      <a href="#contact">Contact</a>
+      <a href="profile.html">Profile</a>
+    </div>
+    <div class="nav-right">
+      <button class="icon-btn" id="search-btn" title="Search (Ctrl+K)">🔍</button>
+      <button class="icon-btn" id="theme-btn" title="Toggle theme">🌙</button>
+      <a href="#admission" class="cta-nav">Apply Now →</a>
+      <button class="icon-btn ham" id="ham-btn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div id="mob-nav">
+  <a href="#hero">Home</a>
+  <a href="#notices">Notices</a>
+  <a href="#departments">Departments</a>
+  <a href="#achievements">Achievements</a>
+  <a href="#admission">Admission</a>
+  <a href="#contact">Contact</a>
+  <a href="profile.html">Profile</a>
+  <a href="#admission" class="cta-nav">Apply Now →</a>
+</div>
+
+<!-- ══════════════ HERO ══════════════ -->
+<section id="hero">
+  <div class="hero-wrap container">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <div class="badge-dot"></div>
+        Admissions Open 2025–26
+      </div>
+      <h1 class="hero-h1">Bihar's Premier<br><em>Polytechnic</em><br>Institute</h1>
+      <p class="hero-sub">Government Polytechnic Khagaria offers AICTE-approved diploma programs in engineering and technology — shaping the next generation of skilled professionals since 1962.</p>
+      <div class="hero-btns">
+        <a href="#admission" class="btn btn-grad">Explore Admission <span>→</span></a>
+        <a href="#departments" class="btn btn-ghost">View Departments</a>
+      </div>
+    </div>
+    <div class="hero-panel">
+      <div class="panel-card">
+        <div class="panel-label">Quick Stats</div>
+        <div class="stats-grid">
+          <div class="stat-box"><div class="stat-val" data-target="60">0</div><div class="stat-key">Years of Excellence</div></div>
+          <div class="stat-box"><div class="stat-val" data-target="6">0</div><div class="stat-key">Departments</div></div>
+          <div class="stat-box"><div class="stat-val" data-target="1200">0</div><div class="stat-key">Students</div></div>
+          <div class="stat-box"><div class="stat-val" data-target="95">0</div><div class="stat-key">% Placement</div></div>
+        </div>
+      </div>
+      <div class="panel-card">
+        <div class="panel-label">Latest Update</div>
+        <div class="ticker-wrap">
+          <div class="ticker-tag">LIVE</div>
+          <div class="ticker-scroll">
+            <div class="ticker-inner">Semester Exam Results Declared &nbsp;•&nbsp; Admissions Open 2025–26 &nbsp;•&nbsp; New Computer Lab Inaugurated &nbsp;•&nbsp; Annual Tech Fest 2025 — Register Now</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ NOTICES ══════════════ -->
+<section id="notices" class="sec-pad reveal">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-chip">// NOTICE BOARD</div>
+      <h2 class="sec-title">Latest Notices & Events</h2>
+      <p class="sec-desc">Stay updated with official announcements, exam schedules, and campus events.</p>
+    </div>
+    <div class="notices-layout">
+      <div class="notice-board">
+        <div class="notice-head">
+          <h3>📋 Official Notices</h3>
+          <a href="#">View All →</a>
+        </div>
+        <div class="notice-scroll">
+          <div class="ni">
+            <div class="ni-date"><div class="d">15</div><div class="m">Jun</div></div>
+            <div class="ni-body">
+              <h4>Semester End Examination Schedule 2025</h4>
+              <p>All students are requested to collect their admit cards from the office.</p>
+              <span class="ni-tag t-exam">EXAM</span>
+            </div>
+          </div>
+          <div class="ni">
+            <div class="ni-date"><div class="d">10</div><div class="m">Jun</div></div>
+            <div class="ni-body">
+              <h4>Admission Form Submission Last Date Extended</h4>
+              <p>Last date extended to 30 June 2025. Apply at bceceboard.bihar.gov.in</p>
+              <span class="ni-tag t-imp">IMPORTANT</span>
+            </div>
+          </div>
+          <div class="ni">
+            <div class="ni-date"><div class="d">05</div><div class="m">Jun</div></div>
+            <div class="ni-body">
+              <h4>Annual Tech Fest TECHKRAFT 2025</h4>
+              <p>Register for competitions, workshops and cultural events.</p>
+              <span class="ni-tag t-evt">EVENT</span>
+            </div>
+          </div>
+          <div class="ni">
+            <div class="ni-date"><div class="d">01</div><div class="m">Jun</div></div>
+            <div class="ni-body">
+              <h4>New Computer Lab Inaugurated</h4>
+              <p>State-of-the-art 60-seat computer lab with high-speed internet now operational.</p>
+              <span class="ni-tag t-new">NEW</span>
+            </div>
+          </div>
+          <div class="ni">
+            <div class="ni-date"><div class="d">28</div><div class="m">May</div></div>
+            <div class="ni-body">
+              <h4>Scholarship Notification — OBC/SC/ST Students</h4>
+              <p>Applications for post-matric scholarship open. Submit forms before 15 June.</p>
+              <span class="ni-tag t-imp">IMPORTANT</span>
+            </div>
+          </div>
+          <div class="ni">
+            <div class="ni-date"><div class="d">20</div><div class="m">May</div></div>
+            <div class="ni-body">
+              <h4>Industry Visit — CSE & IT Students</h4>
+              <p>Industrial visit to Patna IT Park scheduled for 25 May. Contact HOD CSE.</p>
+              <span class="ni-tag t-evt">EVENT</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="event-hl">
+        <div class="hl-chip">FEATURED EVENT</div>
+        <h3>TECHKRAFT 2025 — Annual Tech Fest</h3>
+        <p>Experience the biggest annual technical festival of GP Khagaria. Participate in hackathons, robotics competitions, paper presentations, coding contests, and cultural programs.</p>
+        <div class="event-metas">
+          <div class="em"><span class="ico">📅</span> 20–22 July 2025</div>
+          <div class="em"><span class="ico">📍</span> GP Khagaria Main Campus</div>
+          <div class="em"><span class="ico">👥</span> Open to all polytechnic students</div>
+          <div class="em"><span class="ico">🏆</span> ₹50,000 in prizes</div>
+        </div>
+        <a href="#" class="btn btn-grad" style="align-self:flex-start">Register Now →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ DEPARTMENTS ══════════════ -->
+<section id="departments" class="sec-pad reveal">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-chip">// DEPARTMENTS</div>
+      <h2 class="sec-title">Choose Your Discipline</h2>
+      <p class="sec-desc">AICTE-approved 3-year diploma programs in engineering and technology across 6 departments.</p>
+    </div>
+    <div class="dept-grid">
+      <div class="dept-card">
+        <div class="dept-stripe s-cse"></div>
+        <span class="dept-icon">💻</span>
+        <h3>Computer Science & Engineering</h3>
+        <p>Programming, algorithms, databases, networks, AI/ML fundamentals, and software development.</p>
+        <div class="dept-foot">
+          <div class="dept-seats">Seats: <strong>60</strong></div>
+          <div class="dept-arrow">→</div>
+        </div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-stripe s-mech"></div>
+        <span class="dept-icon">⚙️</span>
+        <h3>Mechanical Engineering</h3>
+        <p>Machine design, thermodynamics, manufacturing processes, CAD/CAM, and industrial engineering.</p>
+        <div class="dept-foot">
+          <div class="dept-seats">Seats: <strong>60</strong></div>
+          <div class="dept-arrow">→</div>
+        </div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-stripe s-civil"></div>
+        <span class="dept-icon">🏗️</span>
+        <h3>Civil Engineering</h3>
+        <p>Structural analysis, surveying, construction materials, AutoCAD, and infrastructure design.</p>
+        <div class="dept-foot">
+          <div class="dept-seats">Seats: <strong>60</strong></div>
+          <div class="dept-arrow">→</div>
+        </div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-stripe s-elec"></div>
+        <span class="dept-icon">⚡</span>
+        <h3>Electrical Engineering</h3>
+        <p>Power systems, circuit theory, electrical machines, control systems, and renewable energy.</p>
+        <div class="dept-foot">
+          <div class="dept-seats">Seats: <strong>60</strong></div>
+          <div class="dept-arrow">→</div>
+        </div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-stripe s-elex"></div>
+        <span class="dept-icon">📡</span>
+        <h3>Electronics Engineering</h3>
+        <p>Analog/digital electronics, microcontrollers, communication systems, and VLSI design.</p>
+        <div class="dept-foot">
+          <div class="dept-seats">Seats: <strong>60</strong></div>
+          <div class="dept-arrow">→</div>
+        </div>
+      </div>
+      <div class="dept-card">
+        <div class="dept-stripe s-sci"></div>
+        <span class="dept-icon">🔬</span>
+        <h3>Science & Humanities</h3>
+        <p>Physics, chemistry, mathematics, English communication, and environmental studies.</p>
+        <div class="dept-foot">
+          <div class="dept-seats">Common</div>
+          <div class="dept-arrow">→</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ ACHIEVEMENTS ══════════════ -->
+<section id="achievements" class="sec-pad reveal">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-chip">// ACHIEVEMENTS</div>
+      <h2 class="sec-title">Our Track Record</h2>
+      <p class="sec-desc">Decades of academic excellence, industry partnerships, and student success stories.</p>
+    </div>
+    <div class="ach-grid">
+      <div class="ach-card">
+        <div class="ach-ico">🎓</div>
+        <div class="ach-val" data-target="12000">0</div>
+        <div class="ach-lbl">Alumni Worldwide</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-ico">🏆</div>
+        <div class="ach-val" data-target="95">0</div>
+        <div class="ach-lbl">% Placement Rate</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-ico">🤝</div>
+        <div class="ach-val" data-target="40">0</div>
+        <div class="ach-lbl">Industry Partners</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-ico">📜</div>
+        <div class="ach-val" data-target="60">0</div>
+        <div class="ach-lbl">Years of Excellence</div>
+      </div>
+    </div>
+
+    <!-- Facilities -->
+    <div class="sec-head" style="margin-top:60px">
+      <div class="sec-chip">// FACILITIES</div>
+      <h2 class="sec-title">World-Class Infrastructure</h2>
+      <p class="sec-desc">Modern labs, smart classrooms, and student support services.</p>
+    </div>
+    <div class="fac-grid">
+      <div class="fac-card reveal">
+        <div class="fac-ico">🖥️</div>
+        <h4>Computer Labs</h4>
+        <p>3 labs with 60+ high-spec PCs, 100 Mbps internet, and licensed software</p>
+      </div>
+      <div class="fac-card reveal">
+        <div class="fac-ico">📚</div>
+        <h4>Central Library</h4>
+        <p>8,000+ books, journals, e-library access, and reading room for 100 students</p>
+      </div>
+      <div class="fac-card reveal">
+        <div class="fac-ico">🏠</div>
+        <h4>Hostel</h4>
+        <p>Separate boys and girls hostels with 24/7 security and mess facility</p>
+      </div>
+      <div class="fac-card reveal">
+        <div class="fac-ico">⚽</div>
+        <h4>Sports Complex</h4>
+        <p>Cricket ground, basketball court, volleyball court, and indoor games room</p>
+      </div>
+      <div class="fac-card reveal">
+        <div class="fac-ico">🔬</div>
+        <h4>Science Labs</h4>
+        <p>Physics, chemistry, and engineering drawing labs with modern equipment</p>
+      </div>
+      <div class="fac-card reveal">
+        <div class="fac-ico">📶</div>
+        <h4>Campus Wi-Fi</h4>
+        <p>High-speed Wi-Fi coverage across the entire campus for all students</p>
+      </div>
+      <div class="fac-card reveal">
+        <div class="fac-ico">🏥</div>
+        <h4>Medical Room</h4>
+        <p>On-campus first-aid and medical support with regular doctor visits</p>
+      </div>
+      <div class="fac-card reveal">
+        <div class="fac-ico">🚌</div>
+        <h4>Transport</h4>
+        <p>College bus service connecting major localities in Khagaria district</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ ADMISSION ══════════════ -->
+<section id="admission" class="sec-pad reveal">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-chip">// ADMISSION</div>
+      <h2 class="sec-title">How to Apply — 2025–26</h2>
+      <p class="sec-desc">Admissions are processed through Bihar DCECE. Follow these steps to secure your seat.</p>
+    </div>
+    <div class="adm-layout">
+      <div class="steps">
+        <div class="step-item">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <h4>Register for DCECE</h4>
+            <p>Visit bceceboard.bihar.gov.in and register for the Diploma Certificate Entrance Competitive Examination.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <h4>Appear for Examination</h4>
+            <p>Take the DCECE exam (Physics, Chemistry, Mathematics) as per the scheduled date.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <h4>Check Merit List</h4>
+            <p>Results and merit rank list are published on the official BCECE board website.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <h4>Document Verification</h4>
+            <p>Report to GP Khagaria with original documents for verification and seat confirmation.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">05</div>
+          <div class="step-body">
+            <h4>Fee Payment & Enrollment</h4>
+            <p>Pay the tuition fee and complete enrollment to begin your academic journey.</p>
+          </div>
+        </div>
+      </div>
+      <div class="adm-form-wrap">
+        <h3>📬 Admission Inquiry</h3>
+        <p>Send us your queries and we'll get back to you within 24 hours.</p>
+        <form id="adm-form" onsubmit="handleForm(event, 'adm-form')">
+          <div class="form-row">
+            <div class="field-wrap">
+              <label>First Name</label>
+              <input type="text" placeholder="Rahul" required>
+            </div>
+            <div class="field-wrap">
+              <label>Last Name</label>
+              <input type="text" placeholder="Kumar" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field-wrap">
+              <label>Email</label>
+              <input type="email" placeholder="rahul@example.com" required>
+            </div>
+            <div class="field-wrap">
+              <label>Phone</label>
+              <input type="tel" placeholder="+91 98765 43210" required>
+            </div>
+          </div>
+          <div class="form-row full">
+            <div class="field-wrap">
+              <label>Preferred Department</label>
+              <select required>
+                <option value="">Select department…</option>
+                <option>Computer Science & Engineering</option>
+                <option>Mechanical Engineering</option>
+                <option>Civil Engineering</option>
+                <option>Electrical Engineering</option>
+                <option>Electronics Engineering</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row full">
+            <div class="field-wrap">
+              <label>Message (optional)</label>
+              <textarea placeholder="Any specific questions about admission…"></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-grad" style="width:100%;justify-content:center;margin-top:8px">Submit Inquiry →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CONTACT ══════════════ -->
+<section id="contact" class="sec-pad reveal">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-chip">// CONTACT</div>
+      <h2 class="sec-title">Get in Touch</h2>
+      <p class="sec-desc">We're here to help. Reach out to the administrative office for any queries.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="ci-item">
+          <div class="ci-ico">📍</div>
+          <div class="ci-text">
+            <h4>Address</h4>
+            <p>Government Polytechnic Khagaria<br>Near Bus Stand, Khagaria — 851204<br>Bihar, India</p>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-ico">📞</div>
+          <div class="ci-text">
+            <h4>Phone</h4>
+            <p>+91-6244-222XXX (Office)<br>+91-6244-222XXX (Principal)</p>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-ico">📧</div>
+          <div class="ci-text">
+            <h4>Email</h4>
+            <p>principal.gpkha@gmail.com<br>gpkhagaria@yahoo.com</p>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-ico">🕐</div>
+          <div class="ci-text">
+            <h4>Office Hours</h4>
+            <p>Monday – Saturday<br>9:00 AM – 5:00 PM</p>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>💬 Send a Message</h3>
+        <p>Fill out the form and our team will respond shortly.</p>
+        <form id="contact-form" onsubmit="handleForm(event, 'contact-form')">
+          <div class="form-row">
+            <div class="field-wrap">
+              <label>Name</label>
+              <input type="text" placeholder="Your full name" required>
+            </div>
+            <div class="field-wrap">
+              <label>Email</label>
+              <input type="email" placeholder="you@example.com" required>
+            </div>
+          </div>
+          <div class="form-row full">
+            <div class="field-wrap">
+              <label>Subject</label>
+              <input type="text" placeholder="e.g. Admission query, Fee structure…" required>
+            </div>
+          </div>
+          <div class="form-row full">
+            <div class="field-wrap">
+              <label>Message</label>
+              <textarea placeholder="Write your message here…" style="min-height:110px" required></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-grad" style="width:100%;justify-content:center;margin-top:8px">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#hero" class="nav-logo" style="justify-content:flex-start">
+        <div class="logo-emblem">🎓</div>
+        <div class="logo-text">
+          <strong>GP Khagaria</strong>
+          <span>Government Polytechnic</span>
+        </div>
+      </a>
+      <p>A premier government polytechnic institute in Bihar offering quality technical education since 1962. Affiliated to SBCTE Bihar and approved by AICTE.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Quick Links</h5>
+      <a href="#hero">Home</a>
+      <a href="#notices">Notices</a>
+      <a href="#departments">Departments</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#admission">Admission</a>
+    </div>
+    <div class="footer-col">
+      <h5>Departments</h5>
+      <a href="#departments">CSE</a>
+      <a href="#departments">Mechanical</a>
+      <a href="#departments">Civil</a>
+      <a href="#departments">Electrical</a>
+      <a href="#departments">Electronics</a>
+    </div>
+    <div class="footer-col">
+      <h5>Resources</h5>
+      <a href="#">Time Table</a>
+      <a href="#">Exam Results</a>
+      <a href="#">Syllabus</a>
+      <a href="#">SBCTE Bihar</a>
+      <a href="#">BCECE Board</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Government Polytechnic Khagaria. All rights reserved.</span>
+    <span>Designed by <a href="#">Ankush Kumar</a> — CSE Dept, GP Khagaria</span>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div id="toast">✅ Message sent successfully!</div>
+
+<script>
+/* ─── Theme ─── */
+const html = document.documentElement;
+const themeBtn = document.getElementById('theme-btn');
+const saved = localStorage.getItem('gpk-theme') || 'dark';
+html.setAttribute('data-theme', saved);
+themeBtn.textContent = saved === 'dark' ? '🌙' : '☀️';
+
+themeBtn.addEventListener('click', () => {
+  const cur = html.getAttribute('data-theme');
+  const next = cur === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  themeBtn.textContent = next === 'dark' ? '🌙' : '☀️';
+  localStorage.setItem('gpk-theme', next);
+});
+
+/* ─── Hamburger ─── */
+const hamBtn = document.getElementById('ham-btn');
+const mobNav = document.getElementById('mob-nav');
+hamBtn.addEventListener('click', () => {
+  hamBtn.classList.toggle('open');
+  mobNav.classList.toggle('open');
+});
+document.querySelectorAll('#mob-nav a').forEach(a => {
+  a.addEventListener('click', () => {
+    hamBtn.classList.remove('open');
+    mobNav.classList.remove('open');
+  });
+});
+
+/* ─── Search ─── */
+const overlay   = document.getElementById('search-overlay');
+const searchBtn = document.getElementById('search-btn');
+const searchInp = document.getElementById('search-input');
+const searchRes = document.getElementById('search-results');
+
+const SEARCH_DATA = [
+  { icon: '💻', title: 'Computer Science & Engineering', desc: 'Diploma in CSE — 60 seats' },
+  { icon: '⚙️', title: 'Mechanical Engineering', desc: 'Diploma in Mechanical — 60 seats' },
+  { icon: '🏗️', title: 'Civil Engineering', desc: 'Diploma in Civil — 60 seats' },
+  { icon: '⚡', title: 'Electrical Engineering', desc: 'Diploma in Electrical — 60 seats' },
+  { icon: '📡', title: 'Electronics Engineering', desc: 'Diploma in Electronics — 60 seats' },
+  { icon: '📋', title: 'Notice Board', desc: 'Official notices, exam schedules' },
+  { icon: '📬', title: 'Admission 2025–26', desc: 'Apply via Bihar DCECE' },
+  { icon: '🏆', title: 'Achievements', desc: 'Placement records and awards' },
+  { icon: '📞', title: 'Contact Us', desc: 'Office hours and contact details' },
+  { icon: '👤', title: 'Student Profile', desc: 'View and manage student profile' },
+];
+
+function openSearch() { overlay.classList.add('open'); searchInp.focus(); renderSearch(''); }
+function closeSearch() { overlay.classList.remove('open'); searchInp.value = ''; }
+
+function renderSearch(q) {
+  const items = q
+    ? SEARCH_DATA.filter(d => (d.title + d.desc).toLowerCase().includes(q.toLowerCase()))
+    : SEARCH_DATA;
+  searchRes.innerHTML = items.length
+    ? items.map(d => `<div class="sr-item"><span>${d.icon}</span><div class="sr-info"><h4>${d.title}</h4><p>${d.desc}</p></div></div>`).join('')
+    : '<p style="padding:16px;color:var(--muted);font-size:13px">No results found.</p>';
+}
+
+searchBtn.addEventListener('click', openSearch);
+searchInp.addEventListener('input', e => renderSearch(e.target.value));
+overlay.addEventListener('click', e => { if (e.target === overlay) closeSearch(); });
+
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+  if (e.key === '/' && !overlay.classList.contains('open') && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') { e.preventDefault(); openSearch(); }
+  if (e.key === 'Escape') closeSearch();
+});
+
+/* ─── Active nav on scroll ─── */
+const sections = document.querySelectorAll('section[id], footer[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { threshold: 0.35 });
+sections.forEach(s => observer.observe(s));
+
+/* ─── Reveal on scroll ─── */
+const revealEls = document.querySelectorAll('.reveal');
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+revealEls.forEach(el => revObs.observe(el));
+
+/* ─── Animated counters ─── */
+function animateCounter(el) {
+  const target = +el.dataset.target;
+  const dur = 1800;
+  const step = target / (dur / 16);
+  let cur = 0;
+  const tick = () => {
+    cur = Math.min(cur + step, target);
+    el.textContent = Math.round(cur).toLocaleString();
+    if (cur < target) requestAnimationFrame(tick);
+  };
+  tick();
+}
+
+const counterObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('[data-target]').forEach(animateCounter);
+      counterObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.stats-grid, .ach-grid').forEach(el => counterObs.observe(el));
+
+/* ─── Particle canvas ─── */
+(function () {
+  const cvs = document.getElementById('cvs');
+  const ctx = cvs.getContext('2d');
+  let W, H, pts;
+
+  function resize() {
+    W = cvs.width  = window.innerWidth;
+    H = cvs.height = window.innerHeight;
+  }
+
+  function mkPts(n) {
+    return Array.from({ length: n }, () => ({
+      x: Math.random() * W, y: Math.random() * H,
+      vx: (Math.random() - .5) * .4, vy: (Math.random() - .5) * .4,
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    const col = isDark ? '59,130,246' : '37,99,235';
+
+    pts.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1;
+      if (p.y < 0 || p.y > H) p.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 1.8, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${col},0.6)`;
+      ctx.fill();
+    });
+
+    for (let i = 0; i < pts.length; i++) {
+      for (let j = i + 1; j < pts.length; j++) {
+        const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(pts[i].x, pts[i].y);
+          ctx.lineTo(pts[j].x, pts[j].y);
+          ctx.strokeStyle = `rgba(${col},${(1 - dist / 120) * 0.25})`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  pts = mkPts(60);
+  draw();
+  window.addEventListener('resize', () => { resize(); pts = mkPts(60); });
+})();
+
+/* ─── Form handler ─── */
+function handleForm(e, id) {
+  e.preventDefault();
+  const toast = document.getElementById('toast');
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3500);
+  document.getElementById(id).reset();
+}
+</script>
+</body>
+</html>
+

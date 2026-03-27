@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Student Profile — Government Polytechnic Khagaria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════
+   TOKENS (shared with index.html)
+═══════════════════════════════════════════════ */
+:root {
+  --ff-head: 'Outfit', sans-serif;
+  --ff-mono: 'IBM Plex Mono', monospace;
+  --ff-body: 'Outfit', sans-serif;
+  --r-sm:  10px;
+  --r-md:  16px;
+  --r-lg:  24px;
+  --r-xl:  32px;
+  --nav-h: 64px;
+  --max-w: 1180px;
+}
+
+[data-theme="dark"] {
+  --bg:       #050912;
+  --bg2:      #0b1022;
+  --bg3:      #111827;
+  --surface:  rgba(255,255,255,0.045);
+  --border:   rgba(255,255,255,0.07);
+  --text:     #e4e9f7;
+  --muted:    #6b748f;
+  --blue:     #3b82f6;
+  --cyan:     #06b6d4;
+  --teal:     #14b8a6;
+  --orange:   #f97316;
+  --gold:     #f59e0b;
+  --green:    #22c55e;
+  --nav-bg:   rgba(5,9,18,0.92);
+  --shadow-c: rgba(59,130,246,0.25);
+}
+
+[data-theme="light"] {
+  --bg:       #f1f5ff;
+  --bg2:      #ffffff;
+  --bg3:      #e8eef8;
+  --surface:  rgba(255,255,255,0.75);
+  --border:   rgba(0,0,0,0.08);
+  --text:     #111827;
+  --muted:    #6b7280;
+  --blue:     #2563eb;
+  --cyan:     #0891b2;
+  --teal:     #0d9488;
+  --orange:   #ea580c;
+  --gold:     #d97706;
+  --green:    #16a34a;
+  --nav-bg:   rgba(241,245,255,0.94);
+  --shadow-c: rgba(37,99,235,0.14);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--ff-body);
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+  transition: background .35s, color .35s;
+}
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+ul { list-style: none; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
+
+/* ═══════════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════════ */
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 900;
+  background: var(--nav-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  margin-right: auto;
+}
+.logo-emblem {
+  width: 40px; height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--blue), var(--teal));
+  display: grid; place-items: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 4px 16px var(--shadow-c);
+}
+.logo-text strong { display: block; font-family: var(--ff-head); font-weight: 800; font-size: 14px; }
+.logo-text span { display: block; font-size: 11px; color: var(--muted); font-weight: 400; }
+
+.nav-links { display: flex; align-items: center; gap: 2px; }
+.nav-links a { font-size: 13px; color: var(--muted); padding: 6px 12px; border-radius: 8px; transition: color .2s, background .2s; font-weight: 500; }
+.nav-links a:hover { color: var(--text); background: var(--surface); }
+.nav-links a.active { color: var(--blue); background: rgba(59,130,246,0.1); }
+
+.nav-right { display: flex; align-items: center; gap: 8px; }
+.icon-btn {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  display: grid; place-items: center;
+  font-size: 16px; color: var(--muted);
+  transition: all .2s;
+}
+.icon-btn:hover { color: var(--blue); border-color: var(--blue); }
+.back-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 13px; color: var(--muted);
+  font-weight: 500; transition: all .2s;
+}
+.back-btn:hover { color: var(--blue); border-color: var(--blue); }
+
+/* ═══════════════════════════════════════════════
+   PAGE LAYOUT
+═══════════════════════════════════════════════ */
+.page-wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: calc(var(--nav-h) + 40px) 20px 60px;
+}
+
+.page-header {
+  margin-bottom: 32px;
+}
+.page-header .breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  font-family: var(--ff-mono);
+  margin-bottom: 8px;
+}
+.page-header .breadcrumb a { color: var(--blue); }
+.page-header h1 {
+  font-family: var(--ff-head);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 900;
+  letter-spacing: -0.8px;
+}
+
+/* ═══════════════════════════════════════════════
+   PROFILE LAYOUT
+═══════════════════════════════════════════════ */
+.profile-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.profile-sidebar {
+  position: sticky;
+  top: calc(var(--nav-h) + 20px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profile-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.profile-avatar {
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--teal));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 44px;
+  margin: 0 auto 18px;
+  box-shadow: 0 0 0 4px var(--bg2), 0 0 0 8px rgba(59,130,246,0.2);
+  position: relative;
+}
+
+.avatar-edit-btn {
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: #fff;
+  font-size: 13px;
+  display: grid; place-items: center;
+  border: 2px solid var(--bg2);
+  cursor: pointer;
+  transition: background .2s;
+}
+.avatar-edit-btn:hover { background: var(--teal); }
+
+.profile-name {
+  font-family: var(--ff-head);
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.profile-id {
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.profile-role {
+  display: inline-block;
+  background: rgba(59,130,246,0.1);
+  border: 1px solid rgba(59,130,246,0.2);
+  border-radius: 100px;
+  padding: 3px 12px;
+  font-size: 12px;
+  color: var(--blue);
+  font-family: var(--ff-mono);
+  margin-bottom: 20px;
+}
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.ps-item {
+  background: var(--bg3);
+  border-radius: 10px;
+  padding: 12px 8px;
+  text-align: center;
+}
+.ps-val {
+  font-family: var(--ff-head);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--blue);
+  line-height: 1;
+}
+.ps-key { font-size: 10px; color: var(--muted); margin-top: 3px; }
+
+.status-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--green);
+  font-weight: 600;
+}
+.status-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
+
+/* Nav menu in sidebar */
+.sidebar-nav {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background .15s, color .15s;
+  border-bottom: 1px solid var(--border);
+}
+.sidebar-nav-item:last-child { border-bottom: none; }
+.sidebar-nav-item:hover { background: var(--bg3); color: var(--text); }
+.sidebar-nav-item.active { color: var(--blue); background: rgba(59,130,246,0.07); }
+.sidebar-nav-item .sn-ico { font-size: 16px; }
+
+/* ═══════════════════════════════════════════════
+   MAIN CONTENT AREA
+═══════════════════════════════════════════════ */
+.profile-main { display: flex; flex-direction: column; gap: 20px; }
+
+.pd-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+.pd-head {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pd-head-left { display: flex; align-items: center; gap: 10px; }
+.pd-head-left span { font-size: 20px; }
+.pd-head-left h3 { font-family: var(--ff-head); font-size: 16px; font-weight: 700; }
+.pd-body { padding: 24px; }
+
+/* Info rows */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.info-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.info-row:nth-child(odd) { padding-right: 24px; border-right: 1px solid var(--border); }
+.info-row:nth-child(even) { padding-left: 24px; }
+.info-row .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--ff-mono); }
+.info-row .value { font-size: 14px; font-weight: 600; }
+
+/* Progress bars */
+.prog-list { display: flex; flex-direction: column; gap: 14px; }
+.prog-item {}
+.prog-header { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px; }
+.prog-header span:last-child { font-family: var(--ff-mono); font-size: 12px; color: var(--blue); font-weight: 600; }
+.prog-bar-bg { background: var(--bg3); border-radius: 100px; height: 8px; overflow: hidden; }
+.prog-bar { height: 100%; border-radius: 100px; background: linear-gradient(90deg, var(--blue), var(--teal)); transition: width 1.2s cubic-bezier(.4,0,.2,1); }
+
+/* Grades table */
+.grades-table { width: 100%; border-collapse: collapse; }
+.grades-table th {
+  text-align: left;
+  padding: 10px 14px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  font-family: var(--ff-mono);
+  border-bottom: 1px solid var(--border);
+}
+.grades-table td {
+  padding: 13px 14px;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border);
+}
+.grades-table tr:last-child td { border-bottom: none; }
+.grades-table tr:hover td { background: rgba(59,130,246,0.04); }
+.grade-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: var(--ff-mono);
+}
+.g-o { background: rgba(34,197,94,0.12); color: var(--green); }
+.g-a { background: rgba(59,130,246,0.12); color: var(--blue); }
+.g-b { background: rgba(20,184,166,0.12); color: var(--teal); }
+.g-c { background: rgba(245,158,11,0.12); color: var(--gold); }
+
+/* Timeline */
+.timeline { display: flex; flex-direction: column; gap: 0; }
+.tl-item {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 20px;
+  position: relative;
+}
+.tl-item:last-child { padding-bottom: 0; }
+.tl-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+.tl-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+.tl-line { width: 2px; flex: 1; background: var(--border); margin-top: 4px; }
+.tl-item:last-child .tl-line { display: none; }
+.tl-content h4 { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+.tl-content p { font-size: 12px; color: var(--muted); }
+.tl-date { font-size: 11px; color: var(--muted); font-family: var(--ff-mono); margin-top: 4px; }
+
+/* Badges section */
+.badges-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 14px;
+  min-width: 90px;
+  text-align: center;
+  transition: all .2s;
+}
+.badge-item:hover { border-color: var(--blue); transform: translateY(-2px); }
+.badge-item .bi-ico { font-size: 28px; }
+.badge-item .bi-name { font-size: 11px; font-weight: 600; }
+.badge-item .bi-date { font-size: 10px; color: var(--muted); font-family: var(--ff-mono); }
+
+/* Edit form */
+.edit-form { display: none; flex-direction: column; gap: 14px; }
+.edit-form.visible { display: flex; }
+.field-wrap { display: flex; flex-direction: column; gap: 6px; }
+.field-wrap label { font-size: 12px; font-weight: 600; color: var(--muted); }
+.field-wrap input, .field-wrap select, .field-wrap textarea {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--text);
+  font-family: var(--ff-body);
+  transition: border-color .2s;
+  width: 100%;
+}
+.field-wrap input:focus, .field-wrap select:focus { outline: none; border-color: var(--blue); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all .22s;
+  border: none;
+  cursor: pointer;
+  font-family: var(--ff-body);
+}
+.btn-grad {
+  background: linear-gradient(135deg, var(--blue), var(--teal));
+  color: #fff;
+  box-shadow: 0 4px 16px var(--shadow-c);
+}
+.btn-grad:hover { transform: translateY(-1px); box-shadow: 0 6px 24px var(--shadow-c); }
+.btn-ghost {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+.btn-sm { padding: 7px 14px; font-size: 12px; }
+
+/* Toast */
+#toast {
+  position: fixed;
+  bottom: 30px; right: 30px;
+  z-index: 2000;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-size: 13px; font-weight: 500;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  transform: translateY(80px); opacity: 0;
+  transition: all .35s cubic-bezier(.32,.72,0,1);
+  pointer-events: none;
+}
+#toast.show { transform: translateY(0); opacity: 1; }
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media (max-width: 860px) {
+  .profile-layout { grid-template-columns: 1fr; }
+  .profile-sidebar { position: static; }
+  .info-grid { grid-template-columns: 1fr; }
+  .info-row:nth-child(odd) { border-right: none; padding-right: 0; }
+  .info-row:nth-child(even) { padding-left: 0; }
+}
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav id="nav">
+  <div class="nav-wrap">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-emblem">🎓</div>
+      <div class="logo-text">
+        <strong>GP Khagaria</strong>
+        <span>Government Polytechnic</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#notices">Notices</a>
+      <a href="index.html#departments">Departments</a>
+      <a href="index.html#admission">Admission</a>
+      <a href="profile.html" class="active">Profile</a>
+    </div>
+    <div class="nav-right">
+      <button class="icon-btn" id="theme-btn" title="Toggle theme">🌙</button>
+      <a href="index.html" class="back-btn">← Back to Home</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="page-wrap">
+  <div class="page-header">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> <span>/</span> <span>Student Profile</span>
+    </div>
+    <h1>Student Profile</h1>
+  </div>
+
+  <div class="profile-layout">
+    <!-- Sidebar -->
+    <aside class="profile-sidebar">
+      <div class="profile-card">
+        <div class="profile-avatar" id="avatar-wrapper">
+          👨‍🎓
+          <button class="avatar-edit-btn" onclick="document.getElementById('avatar-input').click()" title="Change photo">✏️</button>
+          <input type="file" id="avatar-input" accept="image/*" style="display:none" onchange="handleAvatarChange(event)">
+        </div>
+        <div class="profile-name" id="display-name">Rahul Kumar</div>
+        <div class="profile-id">ID: GPK/CSE/2023/042</div>
+        <div class="profile-role">CSE — 2nd Year</div>
+        <div class="profile-stats">
+          <div class="ps-item">
+            <div class="ps-val">8.4</div>
+            <div class="ps-key">CGPA</div>
+          </div>
+          <div class="ps-item">
+            <div class="ps-val">92%</div>
+            <div class="ps-key">Attendance</div>
+          </div>
+          <div class="ps-item">
+            <div class="ps-val">4</div>
+            <div class="ps-key">Semesters</div>
+          </div>
+          <div class="ps-item">
+            <div class="ps-val">6</div>
+            <div class="ps-key">Badges</div>
+          </div>
+        </div>
+        <div class="status-row">
+          <div class="status-dot"></div>
+          Enrolled — Active
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-nav-item active" onclick="showTab('overview', this)">
+          <span class="sn-ico">📊</span> Overview
+        </div>
+        <div class="sidebar-nav-item" onclick="showTab('academics', this)">
+          <span class="sn-ico">📚</span> Academics
+        </div>
+        <div class="sidebar-nav-item" onclick="showTab('activity', this)">
+          <span class="sn-ico">🏆</span> Activity
+        </div>
+        <div class="sidebar-nav-item" onclick="showTab('edit', this)">
+          <span class="sn-ico">✏️</span> Edit Profile
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main panels -->
+    <main class="profile-main">
+
+      <!-- ── OVERVIEW TAB ── -->
+      <div id="tab-overview" class="tab-panel">
+        <!-- Personal Info -->
+        <div class="pd-block">
+          <div class="pd-head">
+            <div class="pd-head-left">
+              <span>👤</span>
+              <h3>Personal Information</h3>
+            </div>
+          </div>
+          <div class="pd-body">
+            <div class="info-grid">
+              <div class="info-row">
+                <div class="label">Full Name</div>
+                <div class="value" id="info-name">Rahul Kumar</div>
+              </div>
+              <div class="info-row">
+                <div class="label">Roll Number</div>
+                <div class="value">GPK/CSE/2023/042</div>
+              </div>
+              <div class="info-row">
+                <div class="label">Date of Birth</div>
+                <div class="value">14 March 2006</div>
+              </div>
+              <div class="info-row">
+                <div class="label">Gender</div>
+                <div class="value">Male</div>
+              </div>
+              <div class="info-row">
+                <div class="label">Email</div>
+                <div class="value" id="info-email">rahul.kumar@gpkhagaria.edu.in</div>
+              </div>
+              <div class="info-row">
+                <div class="label">Phone</div>
+                <div class="value" id="info-phone">+91 98765 43210</div>
+              </div>
+              <div class="info-row">
+                <div class="label">Category</div>
+                <div class="value">General</div>
+              </div>
+              <div class="info-row">
+                <div class="label">Blood Group</div>
+                <div class="value">B+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Academic Info -->
+        <div class="pd-block">
+          <div class="pd-head">
+            <div class="pd-head-left">
+              <span>🏫</span>
+              <h3>Academic Details</h3>
+            </div>
+          </div>
+          <div class="pd-body">
+            <div class="info-grid">
+              <div class="info-row">
+                <div class="label">Department</div>
+                <div class="value">Computer Science & Engineering</div>
+              </div>
+              <div class="info-row">
+                <div class="label">Year of Admission</div>
+                <div class="value">2023</div>
+              </div>
+              <div class="info-row">
+                <div class="label">Current Semester</div>
+                <div class="value">4th Semester</div>
+              </div>
+              <div class="info-row">
+                <div class="label">CGPA</div>
+                <div class="value" style="color:var(--blue)">8.4 / 10.0</div>
+              </div>
+              <div class="info-row">
+                <div class="label">Attendance</div>
+                <div class="value" style="color:var(--green)">92%</div>
+              </div>
+              <div class="info-row">
+                <div class="label">Status</div>
+                <div class="value" style="color:var(--green)">✓ Regular</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Subject Progress -->
+        <div class="pd-block">
+          <div class="pd-head">
+            <div class="pd-head-left">
+              <span>📈</span>
+              <h3>Subject Progress — Semester 4</h3>
+            </div>
+          </div>
+          <div class="pd-body">
+            <div class="prog-list">
+              <div class="prog-item">
+                <div class="prog-header"><span>Data Structures & Algorithms</span><span>88%</span></div>
+                <div class="prog-bar-bg"><div class="prog-bar" style="width:0" data-width="88%"></div></div>
+              </div>
+              <div class="prog-item">
+                <div class="prog-header"><span>Operating Systems</span><span>82%</span></div>
+                <div class="prog-bar-bg"><div class="prog-bar" style="width:0" data-width="82%"></div></div>
+              </div>
+              <div class="prog-item">
+                <div class="prog-header"><span>Computer Networks</span><span>76%</span></div>
+                <div class="prog-bar-bg"><div class="prog-bar" style="width:0" data-width="76%"></div></div>
+              </div>
+              <div class="prog-item">
+                <div class="prog-header"><span>Database Management Systems</span><span>91%</span></div>
+                <div class="prog-bar-bg"><div class="prog-bar" style="width:0" data-width="91%"></div></div>
+              </div>
+              <div class="prog-item">
+                <div class="prog-header"><span>Web Development</span><span>95%</span></div>
+                <div class="prog-bar-bg"><div class="prog-bar" style="width:0" data-width="95%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /tab-overview -->
+
+      <!-- ── ACADEMICS TAB ── -->
+      <div id="tab-academics" class="tab-panel" style="display:none">
+        <div class="pd-block">
+          <div class="pd-head">
+            <div class="pd-head-left">
+              <span>📋</span>
+              <h3>Semester Results</h3>
+            </div>
+          </div>
+          <div class="pd-body">
+            <table class="grades-table">
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>Semester</th>
+                  <th>Marks</th>
+                  <th>Grade</th>
+                  <th>Credits</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Mathematics-I</td><td>1st</td><td>82/100</td>
+                  <td><span class="grade-badge g-a">A</span></td><td>4</td>
+                </tr>
+                <tr>
+                  <td>Physics</td><td>1st</td><td>78/100</td>
+                  <td><span class="grade-badge g-b">B+</span></td><td>4</td>
+                </tr>
+                <tr>
+                  <td>Engineering Drawing</td><td>1st</td><td>91/100</td>
+                  <td><span class="grade-badge g-o">O</span></td><td>3</td>
+                </tr>
+                <tr>
+                  <td>Programming in C</td><td>2nd</td><td>89/100</td>
+                  <td><span class="grade-badge g-a">A+</span></td><td>4</td>
+                </tr>
+                <tr>
+                  <td>Digital Electronics</td><td>2nd</td><td>84/100</td>
+                  <td><span class="grade-badge g-a">A</span></td><td>4</td>
+                </tr>
+                <tr>
+                  <td>Mathematics-II</td><td>2nd</td><td>76/100</td>
+                  <td><span class="grade-badge g-b">B+</span></td><td>4</td>
+                </tr>
+                <tr>
+                  <td>Data Structures</td><td>3rd</td><td>92/100</td>
+                  <td><span class="grade-badge g-o">O</span></td><td>4</td>
+                </tr>
+                <tr>
+                  <td>Computer Organisation</td><td>3rd</td><td>80/100</td>
+                  <td><span class="grade-badge g-a">A</span></td><td>4</td>
+                </tr>
+                <tr>
+                  <td>Java Programming</td><td>3rd</td><td>87/100</td>
+                  <td><span class="grade-badge g-a">A</span></td><td>4</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- CGPA Summary -->
+        <div class="pd-block">
+          <div class="pd-head">
+            <div class="pd-head-left"><span>📊</span><h3>CGPA Trend</h3></div>
+          </div>
+          <div class="pd-body">
+            <div class="prog-list">
+              <div class="prog-item">
+                <div class="prog-header"><span>Semester 1</span><span>7.8 / 10</span></div>
+                <div class="prog-bar-bg"><div class="prog-bar" style="width:0" data-width="78%"></div></div>
+              </div>
+              <div class="prog-item">
+                <div class="prog-header"><span>Semester 2</span><span>8.2 / 10</span></div>
+                <div class="prog-bar-bg"><div class="prog-bar" style="width:0" data-width="82%"></div></div>
+              </div>
+              <div class="prog-item">
+                <div class="prog-header"><span>Semester 3</span><span>8.6 / 10</span></div>
+                <div class="prog-bar-bg"><div class="prog-bar" style="width:0" data-width="86%"></div></div>
+              </div>
+              <div class="prog-item">
+                <div class="prog-header"><span>Semester 4 (ongoing)</span><span>8.4 / 10</span></div>
+                <div class="prog-bar-bg"><div class="prog-bar" style="width:0" data-width="84%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /tab-academics -->
+
+      <!-- ── ACTIVITY TAB ── -->
+      <div id="tab-activity" class="tab-panel" style="display:none">
+        <!-- Badges -->
+        <div class="pd-block">
+          <div class="pd-head">
+            <div class="pd-head-left"><span>🏅</span><h3>Earned Badges</h3></div>
+          </div>
+          <div class="pd-body">
+            <div class="badges-grid">
+              <div class="badge-item">
+                <div class="bi-ico">🥇</div>
+                <div class="bi-name">Topper</div>
+                <div class="bi-date">Sem 3</div>
+              </div>
+              <div class="badge-item">
+                <div class="bi-ico">💻</div>
+                <div class="bi-name">Code Star</div>
+                <div class="bi-date">Hackathon</div>
+              </div>
+              <div class="badge-item">
+                <div class="bi-ico">📚</div>
+                <div class="bi-name">Scholar</div>
+                <div class="bi-date">Library</div>
+              </div>
+              <div class="badge-item">
+                <div class="bi-ico">🎤</div>
+                <div class="bi-name">Speaker</div>
+                <div class="bi-date">TechFest</div>
+              </div>
+              <div class="badge-item">
+                <div class="bi-ico">⚽</div>
+                <div class="bi-name">Sportsman</div>
+                <div class="bi-date">2024</div>
+              </div>
+              <div class="badge-item">
+                <div class="bi-ico">🤝</div>
+                <div class="bi-name">Volunteer</div>
+                <div class="bi-date">NSS</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="pd-block">
+          <div class="pd-head">
+            <div class="pd-head-left"><span>📅</span><h3>Recent Activity</h3></div>
+          </div>
+          <div class="pd-body">
+            <div class="timeline">
+              <div class="tl-item">
+                <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+                <div class="tl-content">
+                  <h4>Submitted Mid-Semester Assignment — DBMS</h4>
+                  <p>Assignment on ER Diagrams submitted on time.</p>
+                  <div class="tl-date">18 Jun 2025</div>
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-left"><div class="tl-dot" style="background:var(--teal)"></div><div class="tl-line"></div></div>
+                <div class="tl-content">
+                  <h4>Participated in TECHKRAFT 2025 Hackathon</h4>
+                  <p>Secured 2nd position in 24-hour hackathon — Team CodeStorm.</p>
+                  <div class="tl-date">22 Jul 2025</div>
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-left"><div class="tl-dot" style="background:var(--green)"></div><div class="tl-line"></div></div>
+                <div class="tl-content">
+                  <h4>Semester 3 Results Published</h4>
+                  <p>SGPA: 8.6 — Distinction. Topped in Data Structures.</p>
+                  <div class="tl-date">15 Jan 2025</div>
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-left"><div class="tl-dot" style="background:var(--gold)"></div><div class="tl-line"></div></div>
+                <div class="tl-content">
+                  <h4>Industrial Visit — Patna IT Park</h4>
+                  <p>Visited BSNL & TCS offices, attended workshop on cloud computing.</p>
+                  <div class="tl-date">25 May 2024</div>
+                </div>
+              </div>
+              <div class="tl-item">
+                <div class="tl-left"><div class="tl-dot" style="background:var(--orange)"></div><div class="tl-line"></div></div>
+                <div class="tl-content">
+                  <h4>Enrolled at Government Polytechnic Khagaria</h4>
+                  <p>Joined the Computer Science & Engineering department.</p>
+                  <div class="tl-date">Sep 2023</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /tab-activity -->
+
+      <!-- ── EDIT PROFILE TAB ── -->
+      <div id="tab-edit" class="tab-panel" style="display:none">
+        <div class="pd-block">
+          <div class="pd-head">
+            <div class="pd-head-left"><span>✏️</span><h3>Edit Personal Information</h3></div>
+          </div>
+          <div class="pd-body">
+            <form id="edit-form" onsubmit="saveProfile(event)">
+              <div class="form-row" style="margin-bottom:14px">
+                <div class="field-wrap">
+                  <label>First Name</label>
+                  <input type="text" id="edit-fname" value="Rahul" required>
+                </div>
+                <div class="field-wrap">
+                  <label>Last Name</label>
+                  <input type="text" id="edit-lname" value="Kumar" required>
+                </div>
+              </div>
+              <div class="form-row" style="margin-bottom:14px">
+                <div class="field-wrap">
+                  <label>Email</label>
+                  <input type="email" id="edit-email" value="rahul.kumar@gpkhagaria.edu.in" required>
+                </div>
+                <div class="field-wrap">
+                  <label>Phone</label>
+                  <input type="tel" id="edit-phone" value="+91 98765 43210" required>
+                </div>
+              </div>
+              <div class="form-row" style="margin-bottom:14px">
+                <div class="field-wrap">
+                  <label>Date of Birth</label>
+                  <input type="date" value="2006-03-14">
+                </div>
+                <div class="field-wrap">
+                  <label>Blood Group</label>
+                  <select>
+                    <option>A+</option><option>A-</option>
+                    <option selected>B+</option><option>B-</option>
+                    <option>O+</option><option>O-</option>
+                    <option>AB+</option><option>AB-</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row" style="margin-bottom:14px">
+                <div class="field-wrap">
+                  <label>Address</label>
+                  <input type="text" id="edit-address" value="Mansi, Khagaria, Bihar — 851212" placeholder="Your address">
+                </div>
+                <div class="field-wrap">
+                  <label>Guardian Phone</label>
+                  <input type="tel" value="+91 97654 32109" placeholder="Guardian contact">
+                </div>
+              </div>
+              <div style="display:flex;gap:10px;margin-top:8px">
+                <button type="submit" class="btn btn-grad">Save Changes ✓</button>
+                <button type="button" class="btn btn-ghost" onclick="showTab('overview', null)">Cancel</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Change Password -->
+        <div class="pd-block">
+          <div class="pd-head">
+            <div class="pd-head-left"><span>🔒</span><h3>Change Password</h3></div>
+          </div>
+          <div class="pd-body">
+            <form onsubmit="changePassword(event)">
+              <div style="display:flex;flex-direction:column;gap:14px">
+                <div class="field-wrap">
+                  <label>Current Password</label>
+                  <input type="password" placeholder="Enter current password" required>
+                </div>
+                <div class="form-row">
+                  <div class="field-wrap">
+                    <label>New Password</label>
+                    <input type="password" placeholder="New password" required>
+                  </div>
+                  <div class="field-wrap">
+                    <label>Confirm Password</label>
+                    <input type="password" placeholder="Confirm new password" required>
+                  </div>
+                </div>
+                <div>
+                  <button type="submit" class="btn btn-grad btn-sm">Update Password</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div><!-- /tab-edit -->
+
+    </main>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast">✅ Profile updated successfully!</div>
+
+<script>
+/* ─── Theme ─── */
+const html = document.documentElement;
+const themeBtn = document.getElementById('theme-btn');
+const saved = localStorage.getItem('gpk-theme') || 'dark';
+html.setAttribute('data-theme', saved);
+themeBtn.textContent = saved === 'dark' ? '🌙' : '☀️';
+themeBtn.addEventListener('click', () => {
+  const cur = html.getAttribute('data-theme');
+  const next = cur === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  themeBtn.textContent = next === 'dark' ? '🌙' : '☀️';
+  localStorage.setItem('gpk-theme', next);
+});
+
+/* ─── Tabs ─── */
+function showTab(tabId, clickedEl) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.style.display = 'none');
+  document.getElementById('tab-' + tabId).style.display = 'flex';
+  document.querySelectorAll('.sidebar-nav-item').forEach(i => i.classList.remove('active'));
+  if (clickedEl) clickedEl.classList.add('active');
+  animateProgressBars();
+}
+
+/* ─── Progress bar animation ─── */
+function animateProgressBars() {
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.prog-bar[data-width]').forEach(bar => {
+      bar.style.width = bar.dataset.width;
+    });
+  });
+}
+
+/* ─── Save Profile ─── */
+function saveProfile(e) {
+  e.preventDefault();
+  const fname = document.getElementById('edit-fname').value;
+  const lname = document.getElementById('edit-lname').value;
+  const fullName = fname + ' ' + lname;
+  document.getElementById('display-name').textContent = fullName;
+  document.getElementById('info-name').textContent = fullName;
+  document.getElementById('info-email').textContent = document.getElementById('edit-email').value;
+  document.getElementById('info-phone').textContent = document.getElementById('edit-phone').value;
+  showToast('✅ Profile updated successfully!');
+  showTab('overview', document.querySelector('.sidebar-nav-item'));
+}
+
+/* ─── Change Password ─── */
+function changePassword(e) {
+  e.preventDefault();
+  showToast('🔒 Password changed successfully!');
+  e.target.reset();
+}
+
+/* ─── Avatar change ─── */
+function handleAvatarChange(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    const wrapper = document.getElementById('avatar-wrapper');
+    wrapper.style.backgroundImage = `url(${ev.target.result})`;
+    wrapper.style.backgroundSize = 'cover';
+    wrapper.style.backgroundPosition = 'center';
+    wrapper.textContent = '';
+    const editBtn = document.createElement('button');
+    editBtn.className = 'avatar-edit-btn';
+    editBtn.textContent = '✏️';
+    editBtn.title = 'Change photo';
+    editBtn.onclick = () => document.getElementById('avatar-input').click();
+    wrapper.appendChild(editBtn);
+    const inp = document.createElement('input');
+    inp.type = 'file'; inp.id = 'avatar-input'; inp.accept = 'image/*';
+    inp.style.display = 'none';
+    inp.onchange = handleAvatarChange;
+    wrapper.appendChild(inp);
+    showToast('📸 Profile photo updated!');
+  };
+  reader.readAsDataURL(file);
+}
+
+/* ─── Toast ─── */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+/* ─── Init ─── */
+document.addEventListener('DOMContentLoaded', () => {
+  animateProgressBars();
+});
+</script>
+</body>
+</html>
